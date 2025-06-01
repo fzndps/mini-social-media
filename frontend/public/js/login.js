@@ -1,0 +1,40 @@
+const form = document.getElementById("loginForm");
+
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    if (username.length < 5) {
+        alert("Username minimal 5 karakter");
+        return;
+    }
+    if (password.length < 8) {
+        alert("Password minimal 8 karakter");
+        return;
+    }
+
+    try {
+        const response = await fetch("https:/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Login berhasil!");
+            // Simpan token (kalau dikasih)
+            // localStorage.setItem("token", data.token);
+            // Redirect
+            // window.location.href = "/dashboard.html";
+        } else {
+            alert(data.message || "Login gagal");
+        }
+    } catch (error) {
+        alert("Gagal terhubung ke server.");
+        console.error(error);
+    }
+});

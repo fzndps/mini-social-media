@@ -1,2 +1,6 @@
 docs/*
+
+frontend/node_modules
+
 backend/.env
+
