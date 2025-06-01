@@ -63,3 +63,19 @@ func (repository *UserRepositoryImpl) FindByUsername(ctx context.Context, tx *sq
 		return user, errors.New("user not found")
 	}
 }
+
+func (repository *UserRepositoryImpl) IsUsernameExists(ctx context.Context, tx *sql.Tx, username string) bool {
+	SQL := "select count(*) from users where username = ?"
+	var count int
+	err := tx.QueryRowContext(ctx, SQL, username).Scan(&count)
+	helper.PanicIfError(err)
+	return count > 0
+}
+
+func (repository *UserRepositoryImpl) IsEmailExists(ctx context.Context, tx *sql.Tx, email string) bool {
+	SQL := "select count(*) from users where email = ?"
+	var count int
+	err := tx.QueryRowContext(ctx, SQL, email).Scan(&count)
+	helper.PanicIfError(err)
+	return count > 0
+}

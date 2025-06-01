@@ -37,6 +37,15 @@ func (service *UserServiceImpl) Register(ctx context.Context, request web.UserRe
 
 	tx, err := service.DB.Begin()
 	helper.PanicIfError(err)
+
+	if service.UserRepository.IsUsernameExists(ctx, tx, request.Username) {
+		panic(exception.NewBadRequestError("Username already taken"))
+	}
+
+	if service.UserRepository.IsEmailExists(ctx, tx, request.Email) {
+		panic(exception.NewBadRequestError("Email already taken"))
+	}
+
 	defer helper.CommitOrRollback(tx)
 
 	user := domain.User{

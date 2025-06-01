@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/fzndps/mini-social-media/backend/helper"
+	"github.com/julienschmidt/httprouter"
 )
 
 type contextKey string
@@ -31,4 +32,12 @@ func JWTMiddleware(next http.Handler) http.Handler {
 		ctx := context.WithValue(r.Context(), userInfoKey, claims)
 		next.ServeHTTP(w, r.WithContext(ctx)) // meneruskan ke request handler berikutnya
 	})
+}
+
+func ProtectedRoute(handler func(http.ResponseWriter, *http.Request, httprouter.Params)) httprouter.Handle {
+	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+		JWTMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			handler(w, r, ps) // tetap passing ps ke handler
+		})).ServeHTTP(w, r)
+	}
 }
