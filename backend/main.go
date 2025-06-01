@@ -10,6 +10,7 @@ import (
 	"github.com/fzndps/mini-social-media/backend/controllers"
 	"github.com/fzndps/mini-social-media/backend/exception"
 	"github.com/fzndps/mini-social-media/backend/helper"
+	"github.com/fzndps/mini-social-media/backend/middleware"
 	"github.com/fzndps/mini-social-media/backend/repository"
 	"github.com/fzndps/mini-social-media/backend/services"
 	"github.com/go-playground/validator/v10"
@@ -29,7 +30,7 @@ func main() {
 
 	router.POST("/auth/register", userController.Register)
 	router.POST("/auth/login", userController.Login)
-	// router.GET("/users/:username", middleware.JWTMiddleware(userController.FindByUsername))
+	router.GET("/users/:username", middleware.ProtectedRoute(userController.FindByUsername))
 
 	router.PanicHandler = exception.ErrorHandler
 

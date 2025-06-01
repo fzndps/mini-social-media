@@ -21,6 +21,10 @@ func ErrorHandler(writer http.ResponseWriter, request *http.Request, err any) {
 		return
 	}
 
+	if badRequestError(writer, request, err) {
+		return
+	}
+
 	internalServerError(writer, request, err)
 }
 
@@ -76,6 +80,27 @@ func unauthorizedError(writer http.ResponseWriter, request *http.Request, err an
 		WebResponse := web.WebResponse{
 			Code:   http.StatusUnauthorized,
 			Status: "UNAUTHORIZED",
+			Data:   exception.Error,
+		}
+
+		helper.WriteResponseBody(writer, WebResponse)
+
+		return true
+	} else {
+		return false
+	}
+}
+
+func badRequestError(writer http.ResponseWriter, request *http.Request, err any) bool {
+	exception, ok := err.(BadRequest)
+
+	if ok {
+		writer.Header().Set("Content-Type", "application/json")
+		writer.WriteHeader(http.StatusBadRequest)
+
+		WebResponse := web.WebResponse{
+			Code:   http.StatusBadRequest,
+			Status: "USERNAME OR EMAIL ALREADY TAKEN",
 			Data:   exception.Error,
 		}
 
