@@ -21,7 +21,7 @@ func ErrorHandler(writer http.ResponseWriter, request *http.Request, err any) {
 		return
 	}
 
-	if badRequestError(writer, request, err) {
+	if conflictRequestError(writer, request, err) {
 		return
 	}
 
@@ -91,15 +91,15 @@ func unauthorizedError(writer http.ResponseWriter, request *http.Request, err an
 	}
 }
 
-func badRequestError(writer http.ResponseWriter, request *http.Request, err any) bool {
-	exception, ok := err.(BadRequest)
+func conflictRequestError(writer http.ResponseWriter, request *http.Request, err any) bool {
+	exception, ok := err.(ConflictRequest)
 
 	if ok {
 		writer.Header().Set("Content-Type", "application/json")
-		writer.WriteHeader(http.StatusBadRequest)
+		writer.WriteHeader(http.StatusConflict)
 
 		WebResponse := web.WebResponse{
-			Code:   http.StatusBadRequest,
+			Code:   http.StatusConflict,
 			Status: "USERNAME OR EMAIL ALREADY TAKEN",
 			Data:   exception.Error,
 		}
