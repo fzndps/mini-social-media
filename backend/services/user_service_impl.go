@@ -39,11 +39,11 @@ func (service *UserServiceImpl) Register(ctx context.Context, request web.UserRe
 	helper.PanicIfError(err)
 
 	if service.UserRepository.IsUsernameExists(ctx, tx, request.Username) {
-		panic(exception.NewBadRequestError("Username already taken"))
+		panic(exception.NewConflictRequestError("Username already taken"))
 	}
 
 	if service.UserRepository.IsEmailExists(ctx, tx, request.Email) {
-		panic(exception.NewBadRequestError("Email already taken"))
+		panic(exception.NewConflictRequestError("Email already taken"))
 	}
 
 	defer helper.CommitOrRollback(tx)

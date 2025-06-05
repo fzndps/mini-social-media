@@ -11,7 +11,7 @@ import (
 
 type contextKey string
 
-const userInfoKey contextKey = "userInfo"
+const UserInfoKey contextKey = "userInfo"
 
 func JWTMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -29,11 +29,12 @@ func JWTMiddleware(next http.Handler) http.Handler {
 		}
 
 		// Simpan data user dari token ke context le
-		ctx := context.WithValue(r.Context(), userInfoKey, claims)
+		ctx := context.WithValue(r.Context(), UserInfoKey, claims)
 		next.ServeHTTP(w, r.WithContext(ctx)) // meneruskan ke request handler berikutnya
 	})
 }
 
+// Bungkus endpoint yang butuh JWT
 func ProtectedRoute(handler func(http.ResponseWriter, *http.Request, httprouter.Params)) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 		JWTMiddleware(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

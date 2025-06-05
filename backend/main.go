@@ -1,7 +1,9 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
@@ -18,25 +20,36 @@ import (
 )
 
 func main() {
+	log.SetOutput(os.Stdout)
 	godotenv.Load()
 	db := app.NewDB()
 	validate := validator.New()
 
+	// User
 	userRepository := repository.NewUserRepository()
 	userService := services.NewUserService(userRepository, db, validate)
 	userController := controllers.NewUserController(userService)
+
+	// Post
+	postRepository := repository.NewPostRepository(db)
+	postService := services.NewPostService(postRepository, db, validate)
+	postController := controllers.NewPostController(postService)
 
 	router := httprouter.New()
 
 	router.POST("/auth/register", userController.Register)
 	router.POST("/auth/login", userController.Login)
+	router.POST("/posts", middleware.ProtectedRoute(postController.Create))
+	router.GET("/posts", middleware.ProtectedRoute(postController.FindAll))
 	router.GET("/users/:username", middleware.ProtectedRoute(userController.FindByUsername))
 
 	router.PanicHandler = exception.ErrorHandler
 
+	handler := helper.CORSMiddleware(router)
+
 	server := http.Server{
 		Addr:    "localhost:3000",
-		Handler: router,
+		Handler: handler,
 	}
 
 	err := server.ListenAndServe()
