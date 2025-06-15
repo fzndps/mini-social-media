@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"database/sql"
+	"errors"
 	"log"
 
 	"github.com/fzndps/mini-social-media/backend/helper"
@@ -47,23 +48,37 @@ func (repository *PostRepositoryImpl) FindAll(ctx context.Context) []domain.Post
 	defer rows.Close()
 
 	var posts []domain.Post
-	found := false
+
 	for rows.Next() {
-		found = true
 		post := domain.Post{}
 		post.User = domain.UserPost{}
 		err := rows.Scan(&post.Id, &post.UserId, &post.Content, &post.ImageURL, &post.CreatedAt, &post.User.Id, &post.User.Username)
 		if err != nil {
-			log.Println("Scan error:", err) // ✅
+			log.Println("Scan error:", err)
 			helper.PanicIfError(err)
 		}
 
-		log.Println("✅ post ditemukan:", post)
+		log.Println("post ditemukan:", post)
 		posts = append(posts, post)
-	}
-	if !found {
-		log.Println("❌ Tidak ada baris yang ditemukan di database (rows kosong)")
 	}
 
 	return posts
+}
+
+func (repository *PostRepositoryImpl) FindById(ctx context.Context, postId int) (domain.Post, error) {
+	SQL := "select id, user_id, content, created_at from posts where id = ?"
+	rows, err := repository.DB.QueryContext(ctx, SQL, postId)
+	helper.PanicIfError(err)
+
+	defer rows.Close()
+
+	post := domain.Post{}
+
+	if rows.Next() {
+		err := rows.Scan(&post.Id, &post.UserId, &post.Content, &post.CreatedAt)
+		helper.PanicIfError(err)
+		return post, nil
+	} else {
+		return post, errors.New("post is not found")
+	}
 }

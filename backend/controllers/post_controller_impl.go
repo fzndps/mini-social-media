@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/fzndps/mini-social-media/backend/constant"
 	"github.com/fzndps/mini-social-media/backend/helper"
-	"github.com/fzndps/mini-social-media/backend/middleware"
 	"github.com/fzndps/mini-social-media/backend/models/web"
 	"github.com/fzndps/mini-social-media/backend/services"
 	"github.com/julienschmidt/httprouter"
@@ -67,7 +67,7 @@ func (controller *PostControllerImpl) Create(writer http.ResponseWriter, request
 	log.Println("✅ Konten post:", content)
 
 	// 5. Ambil user_id dari context (middleware JWT)
-	claimsRaw := request.Context().Value(middleware.UserInfoKey)
+	claimsRaw := request.Context().Value(constant.UserInfoKey)
 	claims, ok := claimsRaw.(*helper.JWTClaim)
 	if !ok {
 		log.Println("❌ GAGAL: JWT context bukan *JWTClaim")
