@@ -2,19 +2,20 @@ package middleware
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"strings"
 
+	"github.com/fzndps/mini-social-media/backend/constant"
 	"github.com/fzndps/mini-social-media/backend/helper"
+
 	"github.com/julienschmidt/httprouter"
 )
 
-type contextKey string
-
-const UserInfoKey contextKey = "userInfo"
-
 func JWTMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Println("📥 Masuk ke middleware ProtectedRoute")
+
 		authHeader := r.Header.Get("Authorization")
 		if !strings.HasPrefix(authHeader, "Bearer ") { // Periksa bearer apakah ada
 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
@@ -29,7 +30,9 @@ func JWTMiddleware(next http.Handler) http.Handler {
 		}
 
 		// Simpan data user dari token ke context le
-		ctx := context.WithValue(r.Context(), UserInfoKey, claims)
+		ctx := context.WithValue(r.Context(), constant.UserInfoKey, claims)
+		log.Println("✅ Token valid, lanjut ke handler...")
+
 		next.ServeHTTP(w, r.WithContext(ctx)) // meneruskan ke request handler berikutnya
 	})
 }

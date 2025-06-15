@@ -79,3 +79,19 @@ func (repository *UserRepositoryImpl) IsEmailExists(ctx context.Context, tx *sql
 	helper.PanicIfError(err)
 	return count > 0
 }
+
+func (repository *UserRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, userId int) (domain.User, error) {
+	SQL := "select id, username from users WHERE id = ? limit 1"
+	rows, err := tx.QueryContext(ctx, SQL, userId)
+	helper.PanicIfError(err)
+	defer rows.Close()
+
+	user := domain.User{}
+	if rows.Next() {
+		err := rows.Scan(&user.Id, &user.Username)
+		helper.PanicIfError(err)
+		return user, nil
+	} else {
+		return user, errors.New("user not found")
+	}
+}

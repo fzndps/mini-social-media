@@ -11,3 +11,7 @@ type UserController interface {
 	Login(writer http.ResponseWriter, request *http.Request, params httprouter.Params)
 	FindByUsername(writer http.ResponseWriter, request *http.Request, params httprouter.Params)
 }
+
+type UserPostController interface {
+	UserPostProfile(writer http.ResponseWriter, request *http.Request, params httprouter.Params)
+}

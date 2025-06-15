@@ -14,8 +14,9 @@ func NewDB() *sql.DB {
 	dbUser := os.Getenv("DB_USER")
 	port := os.Getenv("PORT")
 	dbName := os.Getenv("DB_NAME")
+	dbPassword := os.Getenv("DB_PASSWORD")
 
-	dsn := fmt.Sprintf("%s@tcp(%s:%s)/%s", dbUser, dbHost, port, dbName)
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPassword, dbHost, port, dbName)
 
 	db, err := sql.Open("mysql", dsn)
 	helper.PanicIfError(err)

@@ -10,4 +10,5 @@ import (
 type PostRepository interface {
 	Create(ctx context.Context, tx *sql.Tx, post domain.Post) domain.Post
 	FindAll(ctx context.Context) []domain.Post
+	FindById(ctx context.Context, postId int) (domain.Post, error)
 }
