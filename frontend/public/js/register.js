@@ -57,8 +57,8 @@ registerForm.addEventListener("submit", async function (e) {
 
     if (response.ok) {
       alert("Registrasi berhasil!");
-      // Redirect ke login, kalau mau
-      window.location.href = "/login.html";
+      // Redirect
+      window.location.href = "/public/login.html";
     } else {
       alert(data.message || "Registrasi gagal");
     }
