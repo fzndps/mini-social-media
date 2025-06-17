@@ -1,6 +1,6 @@
-const loginForm = document.getElementById("loginForm");
+const form = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", async function (e) {
+form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const username = document.getElementById("loginUsername").value.trim();
@@ -27,9 +27,9 @@ loginForm.addEventListener("submit", async function (e) {
         if (response.ok) {
             alert("Login berhasil!");
             // Simpan token (kalau dikasih)
-            localStorage.setItem("token", data.token);
+            // localStorage.setItem("token", data.token);
             // Redirect
-            window.location.href = "/public/dashboard.html";
+            // window.location.href = "/dashboard.html";
         } else {
             alert(data.message || "Login gagal");
         }

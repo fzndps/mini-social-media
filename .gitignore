@@ -1,10 +1,6 @@
 docs/*
-<<<<<<< HEAD
-frontend/node_modules/
-=======
 
 frontend/node_modules
 
 backend/.env
 
->>>>>>> 877df94e645c1749a0dacd5ef1a874376d65a55a

@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
 
-  <!-- Link Tailwind CSS -->
-  <link rel="stylesheet" href="css/output.css">
-
+    <!-- Link Tailwind CSS -->
+    <link rel="stylesheet" href="css/output.css">
+    
 </head>
 
 <body class="bg-slate-800 min-h-screen flex items-center justify-center">
@@ -20,35 +20,17 @@
 
     <!-- Register Form -->
     <form id="registerForm" class="space-y-5">
-      <!-- Username -->
       <div>
         <label class="text-gray-400 block mb-1 text-sm font-medium">Username</label>
-        <input type="text" id="registerUsername" required
+        <input type="text" id="registerName" required
           class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerUsernameError">Masukkan Username</p>
-      </div>
-      <!-- Email -->
-      <div>
-        <label class="text-gray-400 block mb-1 text-sm font-medium">Email</label>
-        <input type="email" id="registerEmail" required
-          class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerEmailError">Masukkan Email</p>
       </div>
 
-      <!-- Password -->
       <div>
         <label class="text-gray-400 block mb-1 text-sm font-medium">Password</label>
         <input type="password" id="registerPassword" required
           class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerPasswordError">Masukkan Password</p>
-      </div>
-
-      <!-- Konfirmasi Password -->
-      <div>
-        <label class="text-gray-400 block mb-1 text-sm font-medium">Konfirmasi Password</label>
-        <input type="password" id="registerConfirmPassword" required
-          class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerConfirmPasswordError">Konfirmasi Password tidak cocok</p>
+        <p class="text-red-500 text-sm hidden" id="registerPasswordError">Password minimal 6 karakter</p>
       </div>
 
       <button type="submit"
@@ -57,7 +39,6 @@
       </button>
     </form>
   </div>
-  <script src="js/register.js"></script>
 </body>
 
 
