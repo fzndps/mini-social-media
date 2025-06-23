@@ -40,10 +40,11 @@ func ToPostResponses(posts []domain.Post) []web.FindAllPostResponses {
 	var postResponses []web.FindAllPostResponses
 	for _, post := range posts {
 		postResponses = append(postResponses, web.FindAllPostResponses{
-			Id:        post.Id,
-			Content:   post.Content,
-			ImageURL:  post.ImageURL,
-			CreatedAt: post.CreatedAt,
+			Id:           post.Id,
+			Content:      post.Content,
+			ImageURL:     post.ImageURL,
+			CreatedAt:    post.CreatedAt,
+			CommentCount: post.CommentCount,
 			User: web.UserResponse{
 				Id:       post.User.Id,
 				Username: post.User.Username,

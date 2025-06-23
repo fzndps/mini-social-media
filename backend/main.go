@@ -49,6 +49,8 @@ func main() {
 	commentController := commentCtrl.NewCommentController(commentService)
 
 	router := httprouter.New()
+	// Di bagian router setup (misalnya di main.go atau setupRouter.go)
+	router.Handler("GET", "/uploads/*filepath", http.StripPrefix("/uploads/", http.FileServer(http.Dir("uploads"))))
 
 	// users
 	router.POST("/auth/register", userController.Register)
