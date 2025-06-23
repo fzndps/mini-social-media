@@ -6,14 +6,14 @@
     let selectedFile = null;
 
     // Klik pada area dropzone
-    dropzone.addEventListener("click", () => fileInput.click());
+    selectImage.addEventListener("click", () => fileInput.click());
 
     // Simpan file yang dipilih
     fileInput.addEventListener("change", () => {
       selectedFile = fileInput.files[0];
       if (selectedFile) {
-        dropzone.classList.add("border-blue-500");
-        dropzone.innerHTML = `
+        selectImage.classList.add("border-blue-500");
+        selectImage.innerHTML = `
           <p class="text-sm text-gray-700">Selected: <strong>${selectedFile.name}</strong></p>
           <p class="text-xs text-gray-500 mt-1">Click to change</p>
         `;
@@ -34,12 +34,13 @@
       formData.append("caption", caption);
 
       try {
-        const res = await fetch("https://your-api-endpoint/posts", {
+        const response = await fetch("http://127.0.0.1:3000/api/posts", {
           method: "POST",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
           body: formData,
         });
 
-        if (!res.ok) throw new Error("Gagal upload");
+        if (!response.ok) throw new Error("Gagal upload");
 
         message.innerHTML = `<p class="text-green-600">Post berhasil ditambahkan!</p>`;
         fileInput.value = "";
