@@ -74,12 +74,12 @@ func ToUserPostResponses(user domain.UserwithPost) web.UserPostResponse {
 
 func ToCommentResponse(comment domain.CommentWitUser) web.CommentResponse {
 	return web.CommentResponse{
-		Id:        comment.Id,
-		Content:   comment.Content,
-		PostId:    comment.PostId,
+		Id:      comment.Id,
+		Content: comment.Content,
+		// PostId:    comment.PostId,
 		CreatedAt: comment.CreatedAt,
 		User: web.UserInfo{
-			Id:       comment.User.Id,
+			// Id:       comment.User.Id,
 			Username: comment.User.Username,
 		},
 	}
@@ -90,12 +90,12 @@ func ToCommentResponses(comments []domain.CommentWitUser) []web.CommentResponse 
 
 	for _, comment := range comments {
 		commentresponses = append(commentresponses, web.CommentResponse{
-			Id:        comment.Id,
-			Content:   comment.Content,
-			PostId:    comment.PostId,
+			Id:      comment.Id,
+			Content: comment.Content,
+			// PostId:    comment.PostId,
 			CreatedAt: comment.CreatedAt,
 			User: web.UserInfo{
-				Id:       comment.User.Id,
+				// Id:       comment.User.Id,
 				Username: comment.User.Username,
 			},
 		})

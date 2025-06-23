@@ -1,12 +1,13 @@
 package domain
 
 type Post struct {
-	Id        int
-	UserId    int
-	Content   string
-	ImageURL  string
-	CreatedAt string
-	User      UserPost
+	Id           int
+	UserId       int
+	Content      string
+	ImageURL     string
+	CreatedAt    string
+	CommentCount int
+	User         UserPost
 }
 
 type UserPost struct {

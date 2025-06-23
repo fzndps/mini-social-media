@@ -51,7 +51,7 @@ func (service *CommentServiceImpl) CreateComment(ctx context.Context, request we
 	helper.PanicIfError(err)
 
 	comment.User = domain.UserCommentInfo{
-		Id:       user.Id,
+		// Id:       user.Id,
 		Username: user.Username,
 	}
 
@@ -63,6 +63,8 @@ func (service *CommentServiceImpl) FindPostWithCommentsById(ctx context.Context,
 	if err != nil {
 		panic(exception.NewNotFoundError("Post not found"))
 	}
+
+	log.Println("isi dari post ", post)
 
 	return post, nil
 }
@@ -96,7 +98,7 @@ func (service *CommentServiceImpl) UpdateComment(ctx context.Context, commentId 
 	}
 
 	updateComment.User = domain.UserCommentInfo{
-		Id:       user.Id,
+		// Id:       user.Id,
 		Username: user.Username,
 	}
 
