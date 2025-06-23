@@ -36,11 +36,12 @@ func (repository *PostRepositoryImpl) Create(ctx context.Context, tx *sql.Tx, po
 
 func (repository *PostRepositoryImpl) FindAll(ctx context.Context) []domain.Post {
 	SQL := `SELECT 
-            posts.id, posts.user_id, posts.content, posts.image_url, posts.created_at, 
-            users.id, users.username
-        FROM posts
-        JOIN users ON posts.user_id = users.id
-        ORDER BY posts.created_at DESC`
+							p.id, p.user_id, p.content, p.image_url, p.created_at, 
+							u.id, u.username,
+							(SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comment_count
+					FROM posts p
+					JOIN users u ON p.user_id = u.id
+					ORDER BY p.created_at DESC`
 
 	rows, err := repository.DB.QueryContext(ctx, SQL)
 	helper.PanicIfError(err)
@@ -52,7 +53,7 @@ func (repository *PostRepositoryImpl) FindAll(ctx context.Context) []domain.Post
 	for rows.Next() {
 		post := domain.Post{}
 		post.User = domain.UserPost{}
-		err := rows.Scan(&post.Id, &post.UserId, &post.Content, &post.ImageURL, &post.CreatedAt, &post.User.Id, &post.User.Username)
+		err := rows.Scan(&post.Id, &post.UserId, &post.Content, &post.ImageURL, &post.CreatedAt, &post.CommentCount, &post.User.Id, &post.User.Username)
 		if err != nil {
 			log.Println("Scan error:", err)
 			helper.PanicIfError(err)

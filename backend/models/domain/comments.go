@@ -10,7 +10,7 @@ type CommentWitUser struct {
 }
 
 type UserCommentInfo struct {
-	Id       int
+	// Id       int
 	Username string
 }
 

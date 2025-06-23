@@ -50,6 +50,5 @@ func (service *PostServiceImpl) Create(ctx context.Context, request web.PostCrea
 
 func (service *PostServiceImpl) FindAll(ctx context.Context) []web.FindAllPostResponses {
 	posts := service.PostRepository.FindAll(ctx)
-	log.Println("✅Isi ini posts dari service", posts)
 	return helper.ToPostResponses(posts)
 }
