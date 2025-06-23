@@ -16,20 +16,21 @@ loginForm.addEventListener("submit", async function (e) {
     }
 
     try {
-        const response = await fetch("https:/api/login", {
+        const response = await fetch("http://127.0.0.1:3000/auth/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password })
         });
 
         const data = await response.json();
+        console.log(data.data.access_token)
 
         if (response.ok) {
             alert("Login berhasil!");
             // Simpan token (kalau dikasih)
-            localStorage.setItem("token", data.token);
+            localStorage.setItem("token", data.data.access_token);
             // Redirect
-            window.location.href = "/public/dashboard.html";
+            window.location.href = "../public/dashboard.html";
         } else {
             alert(data.message || "Login gagal");
         }

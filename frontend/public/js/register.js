@@ -41,13 +41,13 @@ registerForm.addEventListener("submit", async function (e) {
 
   // Kirim data ke backend
   try {
-    const response = await fetch("https:/localhost/auth/register", {
+    const response = await fetch("http://127.0.0.1:3000/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        name,
+        username,
         email,
         password
       })

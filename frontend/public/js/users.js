@@ -1,49 +1,73 @@
-const form = document.getElementById("searchForm");
-const input = document.getElementById("searchInput");
-const resultDiv = document.getElementById("result");
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBtn = document.getElementById("searchBtn");
+  const searchInput = document.getElementById("searchInput");
+  const userCards = document.getElementById("userCards");
+  const searchResults = document.getElementById("searchResults");
+  const noResults = document.getElementById("noResults");
+  const errorMessage = document.getElementById("errorMessage");
+  const errorText = document.getElementById("errorText");
+  const loadingIndicator = document.getElementById("loadingIndicator");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  searchBtn.addEventListener("click", async () => {
+    const username = searchInput.value.trim();
+    const token = localStorage.getItem("token");
 
-  const query = input.value.trim();
+    // Reset semua tampilan
+    userCards.innerHTML = "";
+    searchResults.classList.add("hidden");
+    noResults.classList.add("hidden");
+    errorMessage.classList.add("hidden");
+    loadingIndicator.classList.remove("hidden");
 
-  // Validasi input kosong
-  if (!query) {
-    resultDiv.innerHTML = `
-      <p class="text-red-500">Username tidak boleh kosong.</p>
-    `;
-    return;
-  }
-
-  try {
-    // Ambil data user dari server
-    const response = await fetch("https://localhost/auth/users");
-
-    if (!response.ok) {
-      throw new Error("Data gagal diambil.");
+    if (!username) {
+      alert("Masukkan username yang ingin dicari!");
+      loadingIndicator.classList.add("hidden");
+      return;
     }
 
-    const users = await response.json();
-
-    // Cari user berdasarkan username
-    const user = users.find((u) => 
-      u.username.toLowerCase() === query.toLowerCase()
-    );
-
-    // Tampilkan hasil pencarian
-    if (user) {
-      resultDiv.innerHTML =
-        `<div class="bg-green-100 p-4 rounded text-sm">
-          <p><strong>Username:</strong> ${user.username}</p>
-        </div>`;
-    } else {
-      resultDiv.innerHTML = 
-      `<p class="text-red-500">User tidak ditemukan.</p>`;
+    if (!token) {
+      alert("Kamu belum login!");
+      window.location.href = "login.html";
+      return;
     }
-  } catch (err) {
-    // Tangani error (seperti koneksi gagal)
-    resultDiv.innerHTML = `
-      <p class="text-red-500">Terjadi kesalahan: ${err.message}</p>
-    `;
-  }
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/users/username/${username}`, {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + token,
+        }
+      });
+
+      const data = await res.json();
+      loadingIndicator.classList.add("hidden");
+
+      if (!res.ok) {
+        if (res.status === 404) {
+          noResults.classList.remove("hidden");
+        } else {
+          errorMessage.classList.remove("hidden");
+          errorText.textContent = data.data || "Terjadi kesalahan tidak diketahui.";
+        }
+        return;
+      }
+
+      const user = data.data;
+      searchResults.classList.remove("hidden");
+
+      // Buat user card
+      const card = document.createElement("div");
+      card.className = "bg-gray-800 p-6 rounded-xl border border-gray-700 shadow";
+      card.innerHTML = `
+        <h4 class="text-xl font-bold mb-2">@${user.Username}</h4>
+      `;
+
+      userCards.appendChild(card);
+    } catch (err) {
+      loadingIndicator.classList.add("hidden");
+      errorMessage.classList.remove("hidden");
+      errorText.textContent = "Gagal terhubung ke server.";
+      console.error(err);
+    }
+  });
 });

@@ -56,12 +56,12 @@ func main() {
 	router.POST("/auth/register", userController.Register)
 	router.POST("/auth/login", userController.Login)
 	router.GET("/api/users/profile/:userId", middleware.ProtectedRoute(userPostController.UserPostProfile))
-	router.POST("/api/posts/:postId/comments", middleware.ProtectedRoute(commentController.CreateComment)) // postId bisa diambil dari body atau path
+	router.POST("/api/posts/:postId/comments", middleware.ProtectedRoute(commentController.CreateComment))
 	router.GET("/api/posts/:postId/comments", middleware.ProtectedRoute(commentController.FindPostWithCommentsById))
 	router.PUT("/api/comments/:commentId", middleware.ProtectedRoute(commentController.UpdateComment))
 	router.DELETE("/api/posts/:postId/comments/:commentId", middleware.ProtectedRoute(commentController.Delete))
 
-	// router.GET("/users/:username", middleware.ProtectedRoute(userController.FindByUsername))
+	router.GET("/api/users/username/:username", middleware.ProtectedRoute(userController.FindByUsername))
 
 	// post
 	router.POST("/api/posts", middleware.ProtectedRoute(postController.Create))
