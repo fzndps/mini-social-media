@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+
+    <!-- Link -->
+    <link rel="stylesheet" href="../public/css/output.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 
+                sm:top-0 sm:left-0 sm:w-60 sm:h-screen sm:border-none 
+                sm:flex sm:flex-col sm:justify-start sm:items-start z-50">
+      <div class="hidden sm:flex items-center gap-2 px-4 py-6">
+        <img src="../src/assets/Minnect.png" alt="Logo" class="w-6 h-6" />
+        <span class="text-xl font-bold">Minnect</span>
+      </div>
+
+      <!-- Menu Items -->
+      <ul class="flex justify-around sm:flex-col sm:items-start sm:space-y-4 sm:px-4 sm:pt-8 w-full">
+        
+        <!-- Home -->
+        <li>
+          <a href="dashboard.html" class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+            </svg>
+
+            <span class="text-xs sm:text-base sm:ml-2">Home</span>
+          </a>
+        </li>
+
+        <!-- Search -->
+        <li>
+          <a href="search.html" class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Search</span>
+          </a>
+        </li>
+
+        <!-- Add Post -->
+        <li>
+          <a href="#" class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Create</span>
+          </a>
+        </li>
+
+        <!-- Profile -->
+        <li>
+          <a href="#" class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Profile</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <main class="flex-1 min-h-screen sm;">
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow p-6">
+            <h1 class="text-xl font-bold mb-4 text-center">Search User</h1>
+
+            <!-- Form -->
+            <form id="searchForm" class="flex gap-2">
+                <input type="text" id="searchInput" placeholder="Enter username..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required/>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Search
+                </button>
+            </form>
+
+            <!-- Hasil Pencarian -->
+            <div id="result" class="mt-6 text-gray-800"></div>
+        </div>
+    </main>
+    
+    <script src="../public/js/users.js"></script>
+  </body>
+</html>
