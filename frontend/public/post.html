@@ -8,46 +8,54 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="../public/css/output.css" />
   </head>
-  <body class="bg-gray-100 min-h-screen flex justify-center items-start pt-10 px-4">
+  <body
+    class="bg-gray-100 min-h-screen flex justify-center items-start pt-10 px-4"
+  >
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
       <h1 class="text-lg font-semibold text-center mb-6">Create New Post</h1>
 
       <!-- Select Image -->
-      <div id="selectImage"
-        class="flex flex-col items-center justify-center border-2 border-dashed
-             border-gray-300 rounded-xl p-8 bg-gray-50 hover:bg-gray-100 transition-colors
-              text-gray-500 text-center cursor-pointer">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-12 h-12 mb-2"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828L18 9.828m0 0v6.586M18 9.828L9.172 18.656"/>
-        </svg>
-        <p class="mb-2">Drag photos and videos here</p>
-        <label
-          for="fileUpload"
-          class="text-blue-600 hover:underline cursor-pointer"
-          >Select from computer
-        </label>
-        <input
-          id="fileUpload"
-          type="file"
-          accept="image/*,video/*"
-          class="hidden"
-        />
-      </div>
+      <form id="selectImage">
+        <div
+          class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-xl p-8 bg-gray-50 hover:bg-gray-100 transition-colors text-gray-500 text-center cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-12 h-12 mb-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15.172 7l-6.586 6.586a2 2 0 002.828 2.828L18 9.828m0 0v6.586M18 9.828L9.172 18.656"
+            />
+          </svg>
+          <p class="mb-2">Drag photos and videos here</p>
+          <label
+            for="image"
+            class="text-blue-600 hover:underline cursor-pointer"
+            >Select from computer
+          </label>
+          <input
+            id="fileUpload"
+            type="file"
+            accept="image/*,video/*"
+            class="hidden"
+            enctype="multipart/form-data"
+            required
+          />
+        </div>
+      </form>
 
       <!-- Caption -->
       <div class="mt-6">
         <label
-          for="caption"
-          class="block text-sm font-medium text-gray-700 mb-1">
+          for="content"
+          class="block text-sm font-medium text-gray-700 mb-1"
+        >
           Caption
         </label>
         <textarea
@@ -58,13 +66,18 @@
       </div>
 
       <!-- Submit -->
-      <button id="submitPost" type="button"
-        class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-semibold">
+      <button
+        id="submitPost"
+        type="button"
+        class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-semibold"
+      >
         Post
       </button>
 
       <!-- Feedback -->
       <div id="message" class="text-sm mt-4 text-center"></div>
     </div>
+
+    <script src="js/post.js"></script>
   </body>
 </html>
