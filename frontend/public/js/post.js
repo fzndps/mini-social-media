@@ -1,63 +1,35 @@
-const selectImage = document.getElementById("selectImage");
-const fileInput = document.getElementById("fileUpload");
-const submitBtn = document.getElementById("submitPost");
-const message = document.getElementById("message");
-const token = localStorage.getItem("token")
+const token = localStorage.getItem("token");
 
-let selectedFile = null;
+if (!token) {
+  alert("Silakan login terlebih dahulu.");
+  window.location.href = "login.html";
+}
 
-selectImage.addEventListener("click", () => fileInput.click());
-
-fileInput.addEventListener("change", () => {
-  selectedFile = fileInput.files[0];
-  if (selectedFile) {
-    selectImage.classList.add("border-blue-500");
-    selectImage.innerHTML = `
-      <p class="text-sm text-gray-700">Selected: <strong>${selectedFile.name}</strong></p>
-      <p class="text-xs text-gray-500 mt-1">Click to change</p>
-    `;
-  }
-});
-
-submitBtn.addEventListener("click", async (e) => {
+document.getElementById("createPostForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const caption = document.getElementById("caption").value.trim();
-
-  if (!selectedFile || !caption) {
-    message.innerHTML = `<p class="text-red-500">File dan caption wajib diisi.</p>`;
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append("file", selectedFile);
-  formData.append("caption", caption);
+  const form = e.target;
+  const formData = new FormData(form);
 
   try {
-    const response = await fetch("http://127.0.0.1:3000/api/posts", {
+    const response = await fetch("http://localhost:3000/api/posts", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       },
-      body: formData,
+      body: formData
     });
 
-    const newPost = await response.json();
-    console.log(newPost.data)
-    console.log(newPost)
+    const result = await response.json();
     if (response.ok) {
-      alert('Berhasil Upload')
+      alert("Post berhasil dibuat!")
     } else {
-      alert('Gagal Upload', newPost.message)
+      alert("Gagal buat post: " + result.message)
     }
 
-    // Simpan data postingan di localStorage
-    localStorage.setItem("latestPost", JSON.stringify(newPost));
-
-    // Redirect ke dashboard
-    window.location.href = "dashboard.html";
+    window.location.href = "../public/dashboard.html"
   } catch (error) {
-    console.error("Upload error:", error);
-    message.innerHTML = `<p class="text-red-500">Error: ${error.message}</p>`;
+    console.error("❌ Error:", error);
+    alert("Terjadi kesalahan saat membuat post.");
   }
 });
