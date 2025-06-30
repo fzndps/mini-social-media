@@ -15,19 +15,18 @@ document.getElementById("createPostForm").addEventListener("submit", async funct
     const response = await fetch("http://localhost:3000/api/posts", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
+        Authorization: `Bearer ${token}`
       },
       body: formData
     });
 
     const result = await response.json();
-    if (response.ok) {
-      alert("Post berhasil dibuat!")
-    } else {
-      alert("Gagal buat post: " + result.message)
-    }
 
-    window.location.href = "../public/dashboard.html"
+    if (response.ok) {
+      window.location.href = "dashboard.html";
+    } else {
+      alert("Gagal buat post: " + result.message);
+    }
   } catch (error) {
     console.error("❌ Error:", error);
     alert("Terjadi kesalahan saat membuat post.");

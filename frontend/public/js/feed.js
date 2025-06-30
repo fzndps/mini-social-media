@@ -25,7 +25,7 @@ async function loadPosts() {
 
     data.data.forEach(post => {
       const postCard = document.createElement("div");
-      postCard.className = "bg-white rounded-xl shadow p-4 mb-4";
+      postCard.className = "w-full bg-white rounded-xl shadow p-4 mb-4";
 
       postCard.innerHTML = `
         <div class="font-bold text-lg">${post.user.username}</div>

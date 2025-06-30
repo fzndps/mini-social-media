@@ -57,10 +57,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Buat user card
       const card = document.createElement("div");
-      card.className = "bg-gray-800 p-6 rounded-xl border border-gray-700 shadow";
+      card.className = "bg-gray-500 p-6 rounded-xl border shadow";
       card.innerHTML = `
-        <h4 class="text-xl font-bold mb-2">@${user.Username}</h4>
-      `;
+        <a href="user_profile.html?username=${encodeURIComponent(user.Username)}" class="text-xl font-bold mb-2 text-white hover:underline block">
+          @${user.Username}
+        </a>
+        `;
+
 
       userCards.appendChild(card);
     } catch (err) {

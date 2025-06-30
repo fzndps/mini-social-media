@@ -8,7 +8,7 @@
     <!-- Link -->
     <link rel="stylesheet" href="../public/css/output.css" />
   </head>
-  <body>
+  <body class="bg-gray-50">
     <!-- Navigation Bar -->
     <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 
                 sm:top-0 sm:left-0 sm:w-60 sm:h-screen sm:border-none 
@@ -66,16 +66,16 @@
 
     
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-8">
+    <main class="max-w-4xl mx-auto px-4 py-8 text-white">
         <!-- Welcome Section -->
-        <div class="text-center mb-12">
+        <div class="text-center mb-12 text-white">
             <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Welcome To MiniSocialMedia
             </h2>
         </div>
 
         <!-- Search Section -->
-        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
+        <div class="bg-gray-800/60 backdrop-blur-md rounded-2xl p-8 mb-8 border border-gray-700 shadow-lg">
             <div class="flex flex-col items-center">
                 <div class="w-full max-w-md">
                     <label for="searchInput" class="block text-sm font-medium text-gray-300 mb-2">
@@ -111,7 +111,7 @@
 
         <!-- Search Results -->
         <div id="searchResults" class="hidden">
-            <h3 class="text-2xl font-bold mb-6 text-center">Result</h3>
+            <h3 class="text-2xl font-bold mb-6 text-center text-white">Result</h3>
             <div id="userCards" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <!-- User cards will be inserted here -->
             </div>
@@ -121,7 +121,7 @@
         <div id="noResults" class="hidden text-center py-12">
             <div class="text-6xl mb-4">🔍</div>
             <h3 class="text-2xl font-bold mb-2 text-gray-300">User Not Found</h3>
-            <p class="text-gray-500">Try a different username.</p>
+            <p class="text-gray-400">Try a different username.</p>
         </div>
 
         <!-- Error Message -->
@@ -133,6 +133,6 @@
     </main>
 
     
-    <script src="js/users.js"></script>
+    <script src="js/search.js"></script>
   </body>
 </html>

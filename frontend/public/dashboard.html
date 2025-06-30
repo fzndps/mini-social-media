@@ -10,12 +10,12 @@
 
      <!-- Navigation Bar START-->
     <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 
-            sm:static sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 
+            sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 
             sm:flex sm:flex-col sm:items-start sm:justify-start z-50">
       <!-- Logo hanya muncul di desktop -->
       <div class="hidden sm:flex items-center gap-2 px-4 py-6">
         <img src="../src/assets/Minnect.png" alt="Logo" class="w-6 h-6" />
-        <span class="text-xl font-bold">Komunitas pembenci PHP</span>
+        <span class="text-xl font-bold">Minnect</span>
       </div>
 
       <!-- Menu -->
@@ -114,9 +114,9 @@
     </nav>
     <!-- Navigation Bar END -->
 
-    <main class="flex-1 mb-16 sm:mb-0 px-4">
+    <main class="flex-1 mb-16 sm:mb-0 sm:ml-60 px-4">
       <!-- Card baru saat Post -->
-       <div id="feed"></div>
+       <div class="max-w-2xl mx-auto px-4" id="feed"></div>
     </main>
 
     <script src="js/feed.js"></script>
