@@ -48,7 +48,7 @@ func (repository *UserRepositoryImpl) LoginByUsername(ctx context.Context, tx *s
 }
 
 func (repository *UserRepositoryImpl) FindByUsername(ctx context.Context, tx *sql.Tx, username string) (domain.User, error) {
-	SQL := "select username, email from users where username = ?"
+	SQL := "select id, username, email from users where username = ?"
 	rows, err := tx.QueryContext(ctx, SQL, username)
 	helper.PanicIfError(err)
 
@@ -56,7 +56,7 @@ func (repository *UserRepositoryImpl) FindByUsername(ctx context.Context, tx *sq
 
 	user := domain.User{}
 	if rows.Next() {
-		err := rows.Scan(&user.Username, &user.Email)
+		err := rows.Scan(&user.Id, &user.Username, &user.Email)
 		helper.PanicIfError(err)
 		return user, nil
 	} else {
