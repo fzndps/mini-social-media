@@ -9,4 +9,5 @@ import (
 type PostService interface {
 	Create(ctx context.Context, request web.PostCreateRequest) web.PostCreateResponse
 	FindAll(ctx context.Context) []web.FindAllPostResponses
+	DeletePost(ctx context.Context, postId int, userId int)
 }

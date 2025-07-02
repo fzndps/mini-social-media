@@ -123,7 +123,7 @@ func (controller *CommentControllerImpl) Delete(writer http.ResponseWriter, requ
 
 	webResponse := web.WebResponse{
 		Code:   http.StatusOK,
-		Status: "OK",
+		Status: "COMMENT DELETED",
 	}
 
 	helper.WriteResponseBody(writer, webResponse)
