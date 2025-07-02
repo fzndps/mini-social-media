@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 
 	"github.com/fzndps/mini-social-media/backend/constant"
 	"github.com/fzndps/mini-social-media/backend/helper"
@@ -119,4 +120,22 @@ func (controller *PostControllerImpl) FindAll(writer http.ResponseWriter, reques
 	log.Println("Ini isi web response", webResponse)
 
 	helper.WriteResponseBody(writer, webResponse)
+}
+
+func (controller *PostControllerImpl) DeletePost(wwriter http.ResponseWriter, request *http.Request, params httprouter.Params) {
+	poId := params.ByName("postId")
+	postId, err := strconv.Atoi(poId)
+	helper.PanicIfError(err)
+
+	userId, err := helper.GetUserIdFromRequest(request)
+	helper.PanicIfError(err)
+
+	controller.PostService.DeletePost(request.Context(), postId, userId)
+
+	webResponse := web.WebResponse{
+		Code:   http.StatusOK,
+		Status: "POST DELETED",
+	}
+
+	helper.WriteResponseBody(wwriter, webResponse)
 }
