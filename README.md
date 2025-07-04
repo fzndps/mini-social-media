@@ -1,6 +1,6 @@
 # 🧑‍🤝‍🧑 Mini Social Media
 
-Mini project Social Media sederhana yang memungkinkan user untuk registrasi, login, membuat postingan, menghapus postingan, dan memberikan komentar.
+Mini project Social Media sederhana yang memungkinkan user untuk registrasi, login, membuat postingan, menghapus postingan, memberikan komentar, dan menghapus komentar.
 
 ---
 
@@ -32,7 +32,6 @@ Mini project Social Media sederhana yang memungkinkan user untuk registrasi, log
 
 - `frontend` → Pengembangan tampilan (UI)
 - `backend` → Pengembangan logika server dan API
-- `staging` → Gabungan frontend + backend untuk pengujian
 - `main` → Versi stabil (production)
 
 ---
