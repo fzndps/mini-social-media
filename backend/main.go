@@ -60,12 +60,12 @@ func main() {
 	router.GET("/api/posts/:postId/comments", middleware.ProtectedRoute(commentController.FindPostWithCommentsById))
 	router.PUT("/api/comments/:commentId", middleware.ProtectedRoute(commentController.UpdateComment))
 	router.DELETE("/api/posts/:postId/comments/:commentId", middleware.ProtectedRoute(commentController.Delete))
-
 	router.GET("/api/users/username/:username", middleware.ProtectedRoute(userController.FindByUsername))
 
 	// post
 	router.POST("/api/posts", middleware.ProtectedRoute(postController.Create))
 	router.GET("/api/posts", middleware.ProtectedRoute(postController.FindAll))
+	router.DELETE("/api/posts/:postId/user/:userId", middleware.ProtectedRoute(postController.DeletePost))
 
 	router.PanicHandler = exception.ErrorHandler
 

@@ -66,20 +66,24 @@ func (repository *PostRepositoryImpl) FindAll(ctx context.Context) []domain.Post
 	return posts
 }
 
-func (repository *PostRepositoryImpl) FindById(ctx context.Context, postId int) (domain.Post, error) {
-	SQL := "select id, user_id, content, created_at from posts where id = ?"
-	rows, err := repository.DB.QueryContext(ctx, SQL, postId)
+func (repository *PostRepositoryImpl) DeletePost(ctx context.Context, tx *sql.Tx, postId int, userId int) {
+	SQL := "delete from posts where id = ? and user_id = ?"
+	_, err := tx.ExecContext(ctx, SQL, postId, userId)
 	helper.PanicIfError(err)
+}
 
-	defer rows.Close()
+func (repository *PostRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, postId int) (domain.Post, error) {
+	SQL := "select id, user_id, content, created_at from posts where id = ?"
+	rows := tx.QueryRowContext(ctx, SQL, postId)
 
 	post := domain.Post{}
-
-	if rows.Next() {
-		err := rows.Scan(&post.Id, &post.UserId, &post.Content, &post.CreatedAt)
-		helper.PanicIfError(err)
+	err := rows.Scan(&post.Id, &post.UserId, &post.Content, &post.CreatedAt)
+	if err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return post, errors.New("Postingan tidak ditemukan")
+		}
 		return post, nil
-	} else {
-		return post, errors.New("post is not found")
 	}
+
+	return post, nil
 }

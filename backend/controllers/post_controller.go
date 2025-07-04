@@ -9,4 +9,5 @@ import (
 type PostController interface {
 	Create(writer http.ResponseWriter, request *http.Request, params httprouter.Params)
 	FindAll(writer http.ResponseWriter, request *http.Request, params httprouter.Params)
+	DeletePost(writer http.ResponseWriter, request *http.Request, params httprouter.Params)
 }
