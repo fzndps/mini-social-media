@@ -3,18 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post</title>
-
-    <!-- Link CSS -->
+    <title>Profil Pengguna</title>
     <link rel="stylesheet" href="../public/css/output.css" />
+    <script defer src="js/profile.js"></script>
   </head>
-  <body
-    class="flex flex-col sm:flex-row min-h-screen bg-gray-50"
-  >
-  <!-- Navbar -->
-    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 
-            sm:static sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 
-            sm:flex sm:flex-col sm:items-start sm:justify-start z-50">
+  <body class="flex flex-col sm:flex-row min-h-screen bg-gray-50">
+    <!-- Navigation Bar START-->
+    <nav
+      class="fixed bottom-0 w-full bg-white border-t border-gray-200 sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 sm:flex sm:flex-col sm:items-start sm:justify-start z-50"
+    >
       <!-- Logo hanya muncul di desktop -->
       <div class="hidden sm:flex items-center gap-2 px-4 py-6">
         <img src="../src/assets/Minnect.png" alt="Logo" class="w-6 h-6" />
@@ -25,16 +22,18 @@
       <ul
         class="flex justify-around sm:flex-col sm:items-start sm:space-y-4 sm:px-4 sm:pt-8 w-full"
       >
-        <!-- Home -->
         <li>
-          <a href="dashboard.html"
-            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+          <a
+            href="dashboard.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
             <svg
               class="w-6 h-6 mx-auto sm:mx-0"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -47,26 +46,27 @@
             <span class="text-xs sm:text-base sm:ml-2">Home</span>
           </a>
         </li>
-
-        <!--Search -->
         <li>
-          <a href="search.html" class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+          <a
+            href="search.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
             <svg
               class="w-6 h-6 mx-auto sm:mx-0"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
             </svg>
             <span class="text-xs sm:text-base sm:ml-2">Search</span>
           </a>
         </li>
-
-        <!--Create -->
         <li>
           <a
             href="post.html"
@@ -88,8 +88,6 @@
             <span class="text-xs sm:text-base sm:ml-2">Create</span>
           </a>
         </li>
-
-        <!-- Profile -->
         <li>
           <a
             href="profile.html"
@@ -115,40 +113,19 @@
         </li>
       </ul>
     </nav>
+    <!-- Navigation Bar END -->
 
+    <main class="w-full max-w-2xl mx-auto pt-6 pb-12 px-4">
+      <!-- Profile Header -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6 text-center">
+        <h1 id="profileUsername" class="text-3xl font-bold mb-2">@username</h1>
+        <p id="postCount" class="text-gray-500">0 postingan</p>
+      </section>
 
-    <!-- Container untuk center form -->
-    <div class="flex-1 flex justify-center items-start px-4 py-10 sm:py-20 overflow-y-auto">
-      <form id="createPostForm" enctype="multipart/form-data" 
-            class="w-full max-w-xl bg-white p-6 rounded-lg shadow-md space-y-4">
-        <h2 class="text-lg font-semibold text-gray-700">Buat Post Baru</h2>
-
-        <textarea
-          name="content"
-          placeholder="Apa yang kamu pikirkan?"
-          required
-          class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
-        ></textarea>
-
-        <input
-          type="file"
-          name="image"
-          accept="image/*"
-          class="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-        />
-
-        <button
-          type="submit"
-          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-150"
-        >
-          Post
-        </button>
-
-        <!-- Tempat pesan error/sukses -->
-        <div id="message" class="text-center text-sm mt-2"></div>
-
-      </form>
-    </div>
-    <script src="js/post.js"></script>
+      <!-- Post List -->
+      <section id="userPosts" class="space-y-4">
+        <p class="text-gray-500">Memuat postingan...</p>
+      </section>
+    </main>
   </body>
 </html>
