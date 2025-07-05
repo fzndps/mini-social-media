@@ -1,3 +1,34 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("token");
+  const form = document.getElementById("createPostForm");
+  const message = document.getElementById("message");
+
+  if (!token) {
+    alert("Silakan login terlebih dahulu.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("http://127.0.0.1:3000/api/posts", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        message.textContent = `Gagal membuat postingan: ${errorText}`;
+        message.className = "text-red-500";
+        return;
+      }
 const selectImage = document.getElementById("dropzone");
 const fileInput = document.getElementById("fileUpload");
 const submitBtn = document.getElementById("submitPost");
@@ -98,3 +129,17 @@ function renderNewPost(data) {
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.5 `
 }
+      const result = await response.json();
+
+      // Simpan postingan terbaru di localStorage
+      localStorage.setItem("newPost", JSON.stringify(result.data));
+
+      // Redirect setelah berhasil
+      window.location.href = "dashboard.html";
+    } catch (error) {
+      console.error("Error saat membuat postingan:", error);
+      message.textContent = "Terjadi kesalahan saat membuat postingan.";
+      message.className = "text-red-500";
+    }
+  });
+});
