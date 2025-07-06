@@ -20,7 +20,6 @@ Mini project Social Media sederhana yang memungkinkan user untuk registrasi, log
 - HTML5
 - Tailwind CSS
 - JavaScript
-- React
 
 ### 🧠 Back End
 - Go (Golang)
