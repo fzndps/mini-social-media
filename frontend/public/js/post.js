@@ -29,14 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         message.className = "text-red-500";
         return;
       }
-const selectImage = document.getElementById("dropzone");
-const fileInput = document.getElementById("fileUpload");
-const submitBtn = document.getElementById("submitPost");
-const message = document.getElementById("message");
-const postsContainer = document.getElementById("postsContainer");
 
-
-      // Redirect setelah berhasil
+      // Redirect jika sukses
       window.location.href = "dashboard.html";
     } catch (error) {
       console.error("Error saat membuat postingan:", error);
@@ -44,4 +38,4 @@ const postsContainer = document.getElementById("postsContainer");
       message.className = "text-red-500";
     }
   });
-
+});
