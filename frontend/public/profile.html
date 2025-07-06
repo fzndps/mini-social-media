@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Pengguna</title>
+    <link rel="stylesheet" href="../public/css/output.css" />
+  </head>
+  <body class="flex flex-col sm:flex-row min-h-screen bg-gray-50">
+    <!-- Navigation Bar START-->
+    <nav
+      class="fixed bottom-0 w-full bg-white border-t border-gray-200 sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 sm:flex sm:flex-col sm:items-start sm:justify-start z-50"
+    >
+      <!-- Logo hanya muncul di desktop -->
+      <div class="hidden sm:flex items-center gap-2 px-4 py-6">
+        <img src="../src/assets/Minnect.png" alt="Logo" class="w-6 h-6" />
+        <span class="text-xl font-bold">Minnect</span>
+      </div>
+
+      <!-- Menu -->
+      <ul
+        class="flex justify-around sm:flex-col sm:items-start sm:space-y-4 sm:px-4 sm:pt-8 w-full"
+      >
+        <li>
+          <a
+            href="dashboard.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
+            <svg
+              class="w-6 h-6 mx-auto sm:mx-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 
+                     .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 
+                     1.125-1.125h2.25c.621 0 1.125.504 1.125 
+                     1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+              />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Home</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="search.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
+            <svg
+              class="w-6 h-6 mx-auto sm:mx-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Search</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="post.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
+            <svg
+              class="w-6 h-6 mx-auto sm:mx-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Create</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="profile.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
+            <svg
+              class="w-6 h-6 mx-auto sm:mx-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 
+                     20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 
+                     12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Profile</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- Navigation Bar END -->
+
+    <main class="w-full max-w-2xl mx-auto pt-6 pb-12 px-4">
+      <!-- Profile Header -->
+      <section class="bg-white rounded-xl shadow p-6 mb-6 text-center">
+        <h1 id="profileUsername" class="text-3xl font-bold mb-2">@username</h1>
+        <p id="postCount" class="text-gray-500">0 postingan</p>
+      </section>
+
+      <!-- Post List -->
+      <section id="userPosts" class="space-y-4">
+        <p class="text-gray-500"></p>
+      </section>
+    </main>
+    <script src="js/profile.js"></script>
+  </body>
+</html>
