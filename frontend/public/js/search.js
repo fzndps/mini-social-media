@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const username = searchInput.value.trim();
     const token = localStorage.getItem("token");
 
-    // Reset semua tampilan
+
     userCards.innerHTML = "";
     searchResults.classList.add("hidden");
     noResults.classList.add("hidden");
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "GET",
         headers: {
           "Authorization": "Bearer " + token,
-        }
+
       });
 
       const data = await res.json();
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
           noResults.classList.remove("hidden");
         } else {
           errorMessage.classList.remove("hidden");
-          errorText.textContent = data.data || "Terjadi kesalahan tidak diketahui.";
+
         }
         return;
       }
@@ -55,14 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const user = data.data;
       searchResults.classList.remove("hidden");
 
-      // Buat user card
-      const card = document.createElement("div");
-      card.className = "bg-gray-500 p-6 rounded-xl border shadow";
-      card.innerHTML = `
-        <a href="user_profile.html?username=${encodeURIComponent(user.Username)}" class="text-xl font-bold mb-2 text-white hover:underline block">
-          @${user.Username}
-        </a>
-        `;
 
 
       userCards.appendChild(card);
@@ -73,4 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(err);
     }
   });
-});
+

@@ -11,3 +11,7 @@ type UserService interface {
 	Login(ctx context.Context, request web.UserLoginRequest) (web.UserLoginResponse, error)
 	FindByUsername(ctx context.Context, username string) web.UserRegisterResponse
 }
+
+type UserPostService interface {
+	UserPostProfile(ctx context.Context, userId int) web.UserPostResponse
+}
