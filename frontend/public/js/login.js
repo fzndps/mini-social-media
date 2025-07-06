@@ -1,5 +1,3 @@
-const loginForm = document.getElementById("loginForm");
-
 loginForm.addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -15,7 +13,22 @@ loginForm.addEventListener("submit", async function (e) {
     return;
   }
 
+  try {
+    const response = await fetch("http://127.0.0.1:3000/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
 
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Login berhasil!");
+      localStorage.setItem("token", data.data.access_token);
+      localStorage.setItem("username", username);
+      window.location.href = "../public/dashboard.html";
+    } else {
+      alert(data.message || "Login gagal");
     }
   } catch (error) {
     alert("Gagal terhubung ke server.");
