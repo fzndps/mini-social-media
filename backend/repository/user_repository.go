@@ -13,4 +13,9 @@ type UserRepository interface {
 	FindByUsername(ctx context.Context, tx *sql.Tx, username string) (domain.User, error)
 	IsUsernameExists(ctx context.Context, tx *sql.Tx, username string) bool
 	IsEmailExists(ctx context.Context, tx *sql.Tx, email string) bool
+	FindById(ctx context.Context, tx *sql.Tx, userId int) (domain.User, error)
+}
+
+type UserPostRepository interface {
+	UserPostProfile(ctx context.Context, userId int) domain.UserwithPost
 }

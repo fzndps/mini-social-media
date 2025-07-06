@@ -1,9 +1,9 @@
 package exception
 
-type BadRequest struct {
+type ConflictRequest struct {
 	Error string
 }
 
-func NewBadRequestError(error string) BadRequest {
-	return BadRequest{Error: error}
+func NewConflictRequestError(error string) ConflictRequest {
+	return ConflictRequest{Error: error}
 }
