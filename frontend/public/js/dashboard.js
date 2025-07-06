@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         feed.innerHTML = ""; // Kosongkan feed dulu
         feed.appendChild(newCard);
         localStorage.removeItem("newPost");
+
     }
 
     
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       <div class="mt-4 flex flex-col items-start space-y-1">
-        <a href="comment.html?postId=${post.id}"
+
           class="inline-flex items-center text-slate-400 hover:text-slate-600 transition"
           aria-label="View Comments">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -139,7 +140,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-
-    return card;
-  }
-});

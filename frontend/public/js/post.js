@@ -29,11 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
         message.className = "text-red-500";
         return;
       }
+const selectImage = document.getElementById("dropzone");
+const fileInput = document.getElementById("fileUpload");
+const submitBtn = document.getElementById("submitPost");
+const message = document.getElementById("message");
+const postsContainer = document.getElementById("postsContainer");
 
-      const result = await response.json();
-
-      // Simpan postingan terbaru di localStorage
-      localStorage.setItem("newPost", JSON.stringify(result.data));
 
       // Redirect setelah berhasil
       window.location.href = "dashboard.html";
@@ -43,4 +44,4 @@ document.addEventListener("DOMContentLoaded", () => {
       message.className = "text-red-500";
     }
   });
-});
+
