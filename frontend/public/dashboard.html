@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="../public/css/output.css" />
   </head>
   <body class="flex flex-col sm:flex-row min-h-screen bg-gray-50">
-
-     <!-- Navigation Bar START-->
-    <nav class="fixed bottom-0 w-full bg-white border-t border-gray-200 
-            sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 
-            sm:flex sm:flex-col sm:items-start sm:justify-start z-50">
+    <!-- Navigation Bar START-->
+    <nav
+      class="fixed bottom-0 w-full bg-white border-t border-gray-200 sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 sm:flex sm:flex-col sm:items-start sm:justify-start z-50"
+    >
       <!-- Logo hanya muncul di desktop -->
       <div class="hidden sm:flex items-center gap-2 px-4 py-6">
         <img src="../src/assets/Minnect.png" alt="Logo" class="w-6 h-6" />
@@ -24,14 +23,17 @@
       >
         <!-- Home -->
         <li>
-          <a href="#"
-            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+          <a
+            href="#"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
             <svg
               class="w-6 h-6 mx-auto sm:mx-0"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -47,17 +49,22 @@
 
         <!--Search -->
         <li>
-          <a href="search.html" class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+          <a
+            href="search.html"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
             <svg
               class="w-6 h-6 mx-auto sm:mx-0"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
             </svg>
             <span class="text-xs sm:text-base sm:ml-2">Search</span>
           </a>
@@ -67,7 +74,8 @@
         <li>
           <a
             href="post.html"
-            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black">
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
+          >
             <svg
               class="w-6 h-6 mx-auto sm:mx-0"
               fill="none"
@@ -114,9 +122,9 @@
     <!-- Navigation Bar END -->
 
     <main class="flex-1 mb-16 sm:mb-0 sm:ml-60 px-4">
-       <div class="max-w-2xl mx-auto px-4" id="feed"></div>
+      <div class="max-w-2xl mx-auto px-4" id="feed"></div>
     </main>
 
-   <script src="js/dashboard.js"></script>
+    <script src="js/dashboard.js"></script>
   </body>
 </html>

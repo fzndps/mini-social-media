@@ -110,15 +110,41 @@
             <span class="text-xs sm:text-base sm:ml-2">Profile</span>
           </a>
         </li>
+        <!-- Logout -->
+        <li>
+          <button
+            id="logoutBtn"
+            class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-red-600 hover:text-red-800 w-full"
+          >
+            <svg
+              class="w-6 h-6 mx-auto sm:mx-0"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2H6a2 
+                2 0 0 1-2-2V7a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v1"
+              />
+            </svg>
+            <span class="text-xs sm:text-base sm:ml-2">Logout</span>
+          </button>
+        </li>
       </ul>
     </nav>
     <!-- Navigation Bar END -->
-
+    <!-- Main Content -->
     <main class="w-full max-w-2xl mx-auto pt-6 pb-12 px-4">
       <!-- Profile Header -->
-      <section class="bg-white rounded-xl shadow p-6 mb-6 text-center">
-        <h1 id="profileUsername" class="text-3xl font-bold mb-2">@username</h1>
-        <p id="postCount" class="text-gray-500">0 postingan</p>
+      <section class="bg-white rounded-xl shadow p-6 mb-6 relative">
+        <!-- Username & Jumlah Postingan -->
+        <h1 id="profileUsername" class="text-3xl font-bold mb-2 text-center">
+          @username
+        </h1>
+        <p id="postCount" class="text-gray-500 text-center">0 postingan</p>
       </section>
 
       <!-- Post List -->
