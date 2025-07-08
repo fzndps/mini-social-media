@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>`
           : ""
       }
-
       <div class="mt-4 flex flex-col items-start space-y-1">
         <a href="comment.html?postId=${post.id}"
           class="inline-flex items-center text-slate-400 hover:text-slate-600 transition"
