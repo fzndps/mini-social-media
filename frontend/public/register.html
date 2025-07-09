@@ -2,61 +2,83 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register</title>
 
-  <!-- Link Tailwind CSS -->
-  <link rel="stylesheet" href="css/output.css">
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="css/output.css" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/custom.css" />
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet" />
 </head>
 
-<body class="bg-slate-800 min-h-screen flex items-center justify-center">
-  <div class="text-white bg-slate-900 p-8 rounded-2xl shadow-2xl w-full max-w-md">
-    <!-- Tabs -->
-    <div class="flex justify-center mb-6 space-x-4">
-      <h1 class="text-slate-400 font-bold flex justify-center">Register</h1>
+<body class="bg-slate-900 min-h-screen flex items-center justify-center font-[Inter] px-4">
+  <div class="w-full max-w-md bg-slate-800 text-white p-8 rounded-2xl shadow-xl border border-slate-700 fade-in">
+
+    <!-- Logo Title -->
+    <div class="flex justify-center mb-6">
+      <h1 class="text-4xl font-bold tracking-wide text-white animate-pulse drop-shadow-glow fade-in">
+        <span class="text-blue-500">Min</span>nect
+      </h1>
     </div>
 
     <!-- Register Form -->
     <form id="registerForm" class="space-y-5">
       <!-- Username -->
       <div>
-        <label class="text-gray-400 block mb-1 text-sm font-medium">Username</label>
+        <label for="registerUsername" class="text-gray-300 block mb-1 text-sm font-medium">Username</label>
         <input type="text" id="registerUsername" required
-          class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerUsernameError">Masukkan Username</p>
+          class="w-full bg-slate-700 text-white border border-slate-600 rounded-xl px-4 py-2 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <p class="text-red-500 text-sm hidden mt-1" id="registerUsernameError">Masukkan Username</p>
       </div>
+
       <!-- Email -->
       <div>
-        <label class="text-gray-400 block mb-1 text-sm font-medium">Email</label>
+        <label for="registerEmail" class="text-gray-300 block mb-1 text-sm font-medium">Email</label>
         <input type="email" id="registerEmail" required
-          class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerEmailError">Masukkan Email</p>
+          class="w-full bg-slate-700 text-white border border-slate-600 rounded-xl px-4 py-2 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <p class="text-red-500 text-sm hidden mt-1" id="registerEmailError">Masukkan Email</p>
       </div>
 
       <!-- Password -->
       <div>
-        <label class="text-gray-400 block mb-1 text-sm font-medium">Password</label>
+        <label for="registerPassword" class="text-gray-300 block mb-1 text-sm font-medium">Password</label>
         <input type="password" id="registerPassword" required
-          class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerPasswordError">Masukkan Password</p>
+          class="w-full bg-slate-700 text-white border border-slate-600 rounded-xl px-4 py-2 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <p class="text-red-500 text-sm hidden mt-1" id="registerPasswordError">Masukkan Password</p>
       </div>
 
       <!-- Konfirmasi Password -->
       <div>
-        <label class="text-gray-400 block mb-1 text-sm font-medium">Konfirmasi Password</label>
+        <label for="registerConfirmPassword" class="text-gray-300 block mb-1 text-sm font-medium">Confirm Password</label>
         <input type="password" id="registerConfirmPassword" required
-          class="w-full border rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-slate-500" />
-        <p class="text-red-500 text-sm hidden" id="registerConfirmPasswordError">Konfirmasi Password tidak cocok</p>
+          class="w-full bg-slate-700 text-white border border-slate-600 rounded-xl px-4 py-2 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <p class="text-red-500 text-sm hidden mt-1" id="registerConfirmPasswordError">Konfirmasi Password tidak cocok</p>
       </div>
 
+      <!-- Submit Button -->
       <button type="submit"
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-xl shadow-md">
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-xl shadow transition duration-300 btn-hover-glow">
         Sign Up
       </button>
+
+      <!-- Link to Login -->
+      <div class="text-center text-sm mt-4">
+        <p class="text-gray-400">Already have an account?
+          <a href="login.html" class="text-blue-400 no-underline hover:no-underline ml-1">Sign In</a>
+        </p>
+      </div>
     </form>
   </div>
+
   <script src="js/register.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,25 @@
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 6px #3b82f6);
+}
+
+/* Efek animasi */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.btn-hover-glow:hover {
+  box-shadow: 0 0 10px #3b82f6, 0 0 20px #3b82f6;
+}
