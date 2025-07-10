@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+
+    <!-- Link Tailwind css -->
     <link rel="stylesheet" href="../public/css/output.css" />
+
   </head>
   <body class="flex flex-col sm:flex-row min-h-screen bg-gray-50">
     <!-- Navigation Bar START-->
@@ -12,9 +15,8 @@
       class="fixed bottom-0 w-full bg-white border-t border-gray-200 sm:fixed sm:top-0 sm:left-0 sm:h-screen sm:w-60 sm:border-t-0 sm:border-r sm:border-gray-300 sm:flex sm:flex-col sm:items-start sm:justify-start z-50"
     >
       <!-- Logo hanya muncul di desktop -->
-      <div class="hidden sm:flex items-center gap-2 px-4 py-6">
-        <img src="../src/assets/Minnect.png" alt="Logo" class="w-6 h-6" />
-        <span class="text-xl font-bold">Minnect</span>
+      <div class="hidden sm:flex justify-center items-center gap-2 px-4 py-6">
+        <img src="../src/assets/Minnect.png" alt="Logo" class="w-25 h-25" />
       </div>
 
       <!-- Menu -->
@@ -24,7 +26,7 @@
         <!-- Home -->
         <li>
           <a
-            href="#"
+            href="dashboard.html"
             class="flex flex-col sm:flex-row sm:items-center gap-1 text-center text-gray-600 hover:text-black"
           >
             <svg
