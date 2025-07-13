@@ -59,10 +59,11 @@ func ToUserPostResponses(user domain.UserwithPost) web.UserPostResponse {
 
 	for _, post := range user.Posts {
 		posts = append(posts, web.UserPostProfile{
-			PostId:    post.PostId,
-			Content:   post.Content,
-			ImageURL:  post.ImageURL,
-			CreatedAt: post.CreatedAt,
+			PostId:       post.PostId,
+			Content:      post.Content,
+			ImageURL:     post.ImageURL,
+			CreatedAt:    post.CreatedAt,
+			CommentCount: post.CommentCount,
 		})
 	}
 
