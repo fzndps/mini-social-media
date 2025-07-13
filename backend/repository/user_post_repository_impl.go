@@ -21,10 +21,11 @@ func NewUserPostRepository(DB *sql.DB) UserPostRepository {
 func (repository *UserPostRepositoryImpl) UserPostProfile(ctx context.Context, userId int) domain.UserwithPost {
 	SQL := `SELECT 
     				u.id AS user_id, u.username,
-    				p.id AS post_id, p.content, p.image_url, p.created_at
+    				p.id AS post_id, p.content, p.image_url, p.created_at,
+					(SELECT COUNT(*) FROM comments c WHERE c.post_id = p.id) AS comment_count
 					FROM users u
 					LEFT JOIN posts p ON u.id = p.user_id
-					WHERE u.id = ?
+					WHERE u.id = ?;
 					`
 	rows, err := repository.DB.QueryContext(ctx, SQL, userId)
 	helper.PanicIfError(err)
@@ -38,7 +39,7 @@ func (repository *UserPostRepositoryImpl) UserPostProfile(ctx context.Context, u
 			post domain.UserProfilePost
 		)
 
-		err := rows.Scan(&user.Id, &user.Username, &post.PostId, &post.Content, &post.ImageURL, &post.CreatedAt)
+		err := rows.Scan(&user.Id, &user.Username, &post.PostId, &post.Content, &post.ImageURL, &post.CreatedAt, &post.CommentCount)
 		helper.PanicIfError(err)
 
 		user.Posts = append(user.Posts, post)

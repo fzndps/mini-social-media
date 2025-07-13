@@ -20,8 +20,9 @@ type UserwithPost struct {
 }
 
 type UserProfilePost struct {
-	PostId    sql.NullInt32
-	Content   sql.NullString
-	ImageURL  sql.NullString
-	CreatedAt sql.NullString
+	PostId       sql.NullInt32
+	Content      sql.NullString
+	ImageURL     sql.NullString
+	CreatedAt    sql.NullString
+	CommentCount sql.NullInt32
 }
