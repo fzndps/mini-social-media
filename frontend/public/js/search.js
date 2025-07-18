@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!token) {
       alert("Kamu belum login!");
-      window.location.href = "login.html";
+      window.location.href = "index.html";
       return;
     }
 
