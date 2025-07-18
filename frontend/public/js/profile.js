@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!username || !token) {
     alert("Username tidak valid atau kamu belum login!");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
     return;
   }
 
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (confirmLogout) {
       localStorage.removeItem("token");
       localStorage.removeItem("username");
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     }
   });
 });

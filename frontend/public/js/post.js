@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cek token
   if (!token) {
     alert("Silakan login terlebih dahulu.");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
     return;
   }
 
